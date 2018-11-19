@@ -2,7 +2,6 @@ D:\Private\InventoryManagementSystem\InventoryManagementSystem\bin\Debug\Invento
 D:\Private\InventoryManagementSystem\InventoryManagementSystem\bin\Debug\InventoryManagementSystem.exe
 D:\Private\InventoryManagementSystem\InventoryManagementSystem\bin\Debug\InventoryManagementSystem.pdb
 D:\Private\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\InventoryManagementSystem.csprojResolveAssemblyReference.cache
-D:\Private\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\InventoryManagementSystem.Base.resources
 D:\Private\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\InventoryManagementSystem.Properties.Resources.resources
 D:\Private\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\InventoryManagementSystem.csproj.GenerateResource.Cache
 D:\Private\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\InventoryManagementSystem.exe
@@ -10,3 +9,5 @@ D:\Private\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\Invento
 D:\Private\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\InventoryManagementSystem.Login.resources
 D:\Private\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\InventoryManagementSystem.Resources.TextBox_waterMark.resources
 D:\Private\InventoryManagementSystem\InventoryManagementSystem\bin\Debug\InventoryDB.mdf
+D:\Private\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\InventoryManagementSystem.BaseForm.resources
+D:\Private\InventoryManagementSystem\InventoryManagementSystem\bin\Debug\InventoryDB_log.ldf

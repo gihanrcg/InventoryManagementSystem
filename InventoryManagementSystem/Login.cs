@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -31,10 +32,10 @@ namespace InventoryManagementSystem
 
         private void txtUserNameLogin_Click(object sender, EventArgs e)
         {
-            if (txtUserNameLogin.Text == "Username")
+            if (txtUserNameLogin.Text == "User ID")
             {
                 txtUserNameLogin.Clear();
-                txtPasswordLogin.Clear(); 
+                txtPasswordLogin.Clear();
             }
         }
 
@@ -96,7 +97,7 @@ namespace InventoryManagementSystem
         private void Login_Load(object sender, EventArgs e)
         {
             pnlLogin.BringToFront();
-           
+
         }
 
         private void btnSelectImage_Click_1(object sender, EventArgs e)
@@ -129,25 +130,38 @@ namespace InventoryManagementSystem
             byte[] imageBt = null;
             if (profilePicSignUp.ImageLocation != null)
             {
-                
-                FileStream fstream = new FileStream(profilePicSignUp.ImageLocation, FileMode.Open, FileAccess.Read);
-                BinaryReader br = new BinaryReader(fstream);
-                imageBt = br.ReadBytes((int)fstream.Length); 
+                MemoryStream ms = new MemoryStream();
+                profilePicSignUp.Image.Save(ms, ImageFormat.Jpeg);
+                imageBt = ms.ToArray();
+
+
+                //FileStream fstream = new FileStream(profilePicSignUp.ImageLocation, FileMode.Open, FileAccess.Read);
+                //BinaryReader br = new BinaryReader(fstream);
+                //imageBt = br.ReadBytes((int)fstream.Length);
             }
 
             if (validateSignUp())
             {
                 DialogResult d = MessageBox.Show("Are you sure you want to sign-up ?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                
+
                 if (d == DialogResult.Yes)
                 {
-                    DBConnect db = new DBConnect();
-                    String q = "Insert into Users(FullName,email,mobile,password,profilePicture) OUTPUT INSERTED.ID values('" + name + "','" + email + "','" + mobile + "','" + password + "','"+imageBt+"')";
+                    try
+                    {
+                        DBConnect db = new DBConnect();
+                        String q = "Insert into Users(FullName,email,mobile,password,profilePicture) OUTPUT INSERTED.ID values('" + name + "','" + email + "','" + mobile + "','" + password + "','@image')";
 
-                    SqlCommand cmd = new SqlCommand(q, db.con);
-                    int id = (int)cmd.ExecuteScalar();
-                    MessageBox.Show("Account created successfully", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    MessageBox.Show("Collect your Employee ID from the Manager \n Use "+id+" as your login UserID","IMPORTANT",MessageBoxButtons.OK,MessageBoxIcon.Information); 
+                        SqlCommand cmd = new SqlCommand(q, db.con);
+                        cmd.Parameters.AddWithValue("image", imageBt);
+                        int id = (int)cmd.ExecuteScalar();
+                        MessageBox.Show("Account created successfully", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Collect your Employee ID from the Manager \n Use " + id + " as your login UserID", "IMPORTANT", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception e)
+                    {
+                        MessageBox.Show("Values you have entered appeared to be invalid","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                        
+                    }
                 }
             }
 
@@ -157,13 +171,14 @@ namespace InventoryManagementSystem
         {
             bool result = false;
 
-            
 
-            if(String.IsNullOrEmpty(txtFullNameSignUp.Text)){
+
+            if (String.IsNullOrEmpty(txtFullNameSignUp.Text))
+            {
                 ErrorProvider.Clear();
-                ErrorProvider.SetError(txtFullNameSignUp,"Name can not be empty");
+                ErrorProvider.SetError(txtFullNameSignUp, "Name can not be empty");
             }
-            else if (!Validations.isValidEmail(txtEmailSignUp.Text)) 
+            else if (!Validations.isValidEmail(txtEmailSignUp.Text))
             {
                 ErrorProvider.Clear();
                 ErrorProvider.SetError(txtEmailSignUp, "Invalid Email Address");
@@ -191,7 +206,7 @@ namespace InventoryManagementSystem
             return result;
 
         }
-       
+
 
 
 
@@ -215,7 +230,7 @@ namespace InventoryManagementSystem
                 {
                     DBConnect db = new DBConnect();
                     String q = "select password from Users where Id = '" + txtUserNameLogin.Text + "'";
-                    SqlCommand cmd = new SqlCommand(q,db.con);
+                    SqlCommand cmd = new SqlCommand(q, db.con);
                     SqlDataReader r = cmd.ExecuteReader();
                     String dbPass = null;
                     if (r.HasRows)
@@ -223,15 +238,18 @@ namespace InventoryManagementSystem
                         while (r.Read())
                         {
                             dbPass = r["password"].ToString();
+                            if (dbPass.Equals(txtPasswordLogin.Text))
+                            {
+                                BaseForm b = new BaseForm(txtUserNameLogin.Text);
+                                b.Show();
+
+                            }
+                            else
+                            {
+                                MessageBox.Show("Login Failed");
+                            }
                         }
-                        if (dbPass.Equals(txtPasswordLogin.Text))
-                        {
-                            MessageBox.Show("Login Successfull");
-                        }
-                        else
-                        {
-                            MessageBox.Show("Login Failed");
-                        }
+
                     }
                     else
                     {
@@ -241,7 +259,7 @@ namespace InventoryManagementSystem
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Data);
-                    
+
                 }
             }
         }
