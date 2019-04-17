@@ -244,7 +244,7 @@ namespace InventoryManagementSystem
 
         private void button3_Click(object sender, EventArgs e)
         {
-            CrudOperations.insert("employee", "name,age,address", "gihan,21,galle");
+          //  CrudOperations.insert("employee", "name,age,address", "gihan,21,galle");
         }
 
         private void button2_Click(object sender, EventArgs e)

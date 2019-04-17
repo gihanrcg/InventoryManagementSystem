@@ -9,7 +9,7 @@ namespace InventoryManagementSystem.DBOperations
 {
     static class CrudOperations
     {
-        public static bool insert(String tableName,String fieldString, String valuesString,Dictionary<String,Object> parameters )
+        public static ResultObject insert(String tableName,String fieldString, String valuesString,Dictionary<String,Object> parameters,Boolean isScaler)
         {
 
             using (DBConnect db = new DBConnect())
@@ -27,7 +27,15 @@ namespace InventoryManagementSystem.DBOperations
                           builder.Append(", " +field);
                       }                    
                 }
-                builder.Append(") VALUES (");
+                if (!isScaler)
+                {
+                    builder.Append(") VALUES (");
+                }
+                else
+                {
+                    builder.Append(") OUTPUT INSERTED.ID VALUES(");
+                }
+                
                 foreach (String value in valuesString.Split(','))
                 {
                     if (builder.ToString().EndsWith("("))
@@ -52,22 +60,55 @@ namespace InventoryManagementSystem.DBOperations
 
                 try
                 {
-                    cmd.ExecuteNonQuery();
-                    return true;
+                    if (isScaler)
+                    {
+                        String id = cmd.ExecuteScalar().ToString();
+                        return new ResultObject(true, id);
+                    }
+                    else
+                    {
+                        cmd.ExecuteNonQuery();
+                        return new ResultObject(true, null);
+                    }                  
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
-                    return false;
+                    return new ResultObject(false,null);
                 }
             }
         }
 
+        public static ResultObject read(String tableName, String fieldString, String whereString)
+        {
+
+            using (DBConnect db = new DBConnect())
+            {
+
+                StringBuilder builder = new StringBuilder();
+                builder.Append("SELECT ");
+                builder.Append(fieldString);
+                
+            }
+        }
+    
+    
+    
     }
 
-    static class ResultObject
+    class ResultObject
     {
         public Boolean isCompletedSuccessFully;
         public String primaryKey;
+        private bool p;
+        private string id;
+
+        public ResultObject(Boolean isCompletedSuccessFully,String primarykey)
+        {
+            this.isCompletedSuccessFully = isCompletedSuccessFully;
+            this.primaryKey = primarykey;
+        }
+
+
     }
 }

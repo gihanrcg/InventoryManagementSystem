@@ -1,14 +1,10 @@
-﻿using System;
+﻿using InventoryManagementSystem.DBOperations;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace InventoryManagementSystem
@@ -148,14 +144,26 @@ namespace InventoryManagementSystem
                 {
                     try
                     {
-                        DBConnect db = new DBConnect();
-                        String q = "Insert into Users(FullName,email,mobile,password,profilePicture) OUTPUT INSERTED.ID values('" + name + "','" + email + "','" + mobile + "','" + password + "','@image')";
+                        Dictionary<String,Object> paramDictionary = new Dictionary<string,object>();
+                        paramDictionary.Add("image", imageBt);
 
-                        SqlCommand cmd = new SqlCommand(q, db.con);
-                        cmd.Parameters.AddWithValue("image", imageBt);
-                        int id = (int)cmd.ExecuteScalar();
+                        ResultObject r = DBOperations.CrudOperations.insert("Users", "FullName,email,mobile,password,profilePicture", "'" + name + "','" + email + "','" + mobile + "','" + password + "','@image'", paramDictionary, true);
+                        String id = r.primaryKey;
+                        
+                        //DBConnect db = new DBConnect();
+                        //String q = "Insert into Users(FullName,email,mobile,password,profilePicture) OUTPUT INSERTED.ID values('" + name + "','" + email + "','" + mobile + "','" + password + "','@image')";
+
+                        //SqlCommand cmd = new SqlCommand(q, db.con);
+                        //cmd.Parameters.AddWithValue("image", imageBt);
+                        //int id = (int)cmd.ExecuteScalar();
                         MessageBox.Show("Account created successfully", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        MessageBox.Show("Collect your Employee ID from the Manager \n Use " + id + " as your login UserID", "IMPORTANT", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        DialogResult di = MessageBox.Show("Collect your Employee ID from the Manager \n Use " + id + " as your login UserID", "IMPORTANT", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        if (di == DialogResult.OK)
+                        {
+                            pnlLogin.BringToFront();
+                        }
+                    
                     }
                     catch (Exception e)
                     {
