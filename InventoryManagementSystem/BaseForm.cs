@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InventoryManagementSystem.DBOperations;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -238,17 +239,18 @@ namespace InventoryManagementSystem
 
         private void button4_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show("SLIIT");
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            CrudOperations.insert("employee", "name,age,address", "gihan,21,galle");
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            pnlSelected.Top = button2.Top;
+            pnlSelected.Height = button2.Height;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -286,6 +288,11 @@ namespace InventoryManagementSystem
             
        
 
+        }
+
+        private void tharinduToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Tahrindu clicked");
         }
 
   

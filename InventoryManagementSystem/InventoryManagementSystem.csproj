@@ -51,6 +51,7 @@
       <DependentUpon>BaseForm.cs</DependentUpon>
     </Compile>
     <Compile Include="DBConnect.cs" />
+    <Compile Include="DBOperations\CrudOperations.cs" />
     <Compile Include="GlobalValues.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>

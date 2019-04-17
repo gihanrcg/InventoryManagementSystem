@@ -64,6 +64,7 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuBaseForm = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tharinduToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -484,14 +485,22 @@
             this.viewOrdersToolStripMenuItem,
             this.dashboardToolStripMenuItem,
             this.toolStripSeparator1,
-            this.exitToolStripMenuItem});
+            this.exitToolStripMenuItem,
+            this.tharinduToolStripMenuItem});
             this.contextMenuBaseForm.Name = "contextMenuStrip1";
             this.contextMenuBaseForm.ShowImageMargin = false;
             this.contextMenuBaseForm.ShowItemToolTips = false;
-            this.contextMenuBaseForm.Size = new System.Drawing.Size(133, 76);
+            this.contextMenuBaseForm.Size = new System.Drawing.Size(133, 98);
             this.contextMenuBaseForm.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuBaseForm_Opening);
             this.contextMenuBaseForm.MouseEnter += new System.EventHandler(this.contextMenuBaseForm_MouseEnter);
             this.contextMenuBaseForm.MouseLeave += new System.EventHandler(this.contextMenuBaseForm_MouseLeave);
+            // 
+            // tharinduToolStripMenuItem
+            // 
+            this.tharinduToolStripMenuItem.Name = "tharinduToolStripMenuItem";
+            this.tharinduToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.tharinduToolStripMenuItem.Text = "Tharindu";
+            this.tharinduToolStripMenuItem.Click += new System.EventHandler(this.tharinduToolStripMenuItem_Click);
             // 
             // toolStrip1
             // 
@@ -590,5 +599,6 @@
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Panel pnlSelected;
         private System.Windows.Forms.Button btnLogout;
+        private System.Windows.Forms.ToolStripMenuItem tharinduToolStripMenuItem;
     }
 }
