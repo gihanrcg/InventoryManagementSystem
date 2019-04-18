@@ -33,16 +33,21 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pnlLogin = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.panel8 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.btnLogin = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.txtPasswordLogin = new System.Windows.Forms.TextBox();
             this.txtUserNameLogin = new System.Windows.Forms.TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnSignUpLogin = new System.Windows.Forms.Button();
             this.pnlSignUp = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
             this.btnLoginSignUp = new System.Windows.Forms.Button();
             this.btnSignUpSignUp = new System.Windows.Forms.Button();
+            this.profilePicSignUp = new OvalPictureBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -63,17 +68,12 @@
             this.txtFullNameSignUp = new System.Windows.Forms.TextBox();
             this.btnSelectImage = new System.Windows.Forms.Button();
             this.ErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.profilePicSignUp = new OvalPictureBox();
             this.pnlLogin.SuspendLayout();
-            this.pnlSignUp.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ErrorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.pnlSignUp.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.profilePicSignUp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ErrorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -117,6 +117,28 @@
             this.pnlLogin.Name = "pnlLogin";
             this.pnlLogin.Size = new System.Drawing.Size(461, 634);
             this.pnlLogin.TabIndex = 3;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Image = global::InventoryManagementSystem.Properties.Resources.icons8_eye_26__1_;
+            this.button1.Location = new System.Drawing.Point(325, 290);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(54, 23);
+            this.button1.TabIndex = 17;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.button1_MouseDown);
+            this.button1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.button1_MouseUp);
+            // 
+            // panel8
+            // 
+            this.panel8.BackColor = System.Drawing.Color.White;
+            this.panel8.Location = new System.Drawing.Point(154, 240);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(227, 1);
+            this.panel8.TabIndex = 17;
             // 
             // panel7
             // 
@@ -179,6 +201,24 @@
             this.txtUserNameLogin.TabIndex = 0;
             this.txtUserNameLogin.Text = "User ID";
             this.txtUserNameLogin.Click += new System.EventHandler(this.txtUserNameLogin_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(82, 189);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(52, 50);
+            this.pictureBox1.TabIndex = 14;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(81, 273);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(52, 50);
+            this.pictureBox2.TabIndex = 15;
+            this.pictureBox2.TabStop = false;
             // 
             // btnSignUpLogin
             // 
@@ -276,6 +316,17 @@
             this.btnSignUpSignUp.Text = "Sign Up";
             this.btnSignUpSignUp.UseVisualStyleBackColor = false;
             this.btnSignUpSignUp.Click += new System.EventHandler(this.btnSignUpSignUp_Click);
+            // 
+            // profilePicSignUp
+            // 
+            this.profilePicSignUp.BackColor = System.Drawing.Color.DarkGray;
+            this.profilePicSignUp.Location = new System.Drawing.Point(58, 52);
+            this.profilePicSignUp.Name = "profilePicSignUp";
+            this.profilePicSignUp.Size = new System.Drawing.Size(108, 116);
+            this.profilePicSignUp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.profilePicSignUp.TabIndex = 25;
+            this.profilePicSignUp.TabStop = false;
+            this.profilePicSignUp.Visible = false;
             // 
             // panel4
             // 
@@ -487,57 +538,6 @@
             this.ErrorProvider.Icon = ((System.Drawing.Icon)(resources.GetObject("ErrorProvider.Icon")));
             this.ErrorProvider.RightToLeft = true;
             // 
-            // panel8
-            // 
-            this.panel8.BackColor = System.Drawing.Color.White;
-            this.panel8.Location = new System.Drawing.Point(154, 240);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(227, 1);
-            this.panel8.TabIndex = 17;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Image = global::InventoryManagementSystem.Properties.Resources.icons8_eye_26__1_;
-            this.button1.Location = new System.Drawing.Point(325, 290);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(54, 23);
-            this.button1.TabIndex = 17;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.button1_MouseDown);
-            this.button1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.button1_MouseUp);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(82, 189);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(52, 50);
-            this.pictureBox1.TabIndex = 14;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(81, 273);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(52, 50);
-            this.pictureBox2.TabIndex = 15;
-            this.pictureBox2.TabStop = false;
-            // 
-            // profilePicSignUp
-            // 
-            this.profilePicSignUp.BackColor = System.Drawing.Color.DarkGray;
-            this.profilePicSignUp.Location = new System.Drawing.Point(58, 52);
-            this.profilePicSignUp.Name = "profilePicSignUp";
-            this.profilePicSignUp.Size = new System.Drawing.Size(108, 116);
-            this.profilePicSignUp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.profilePicSignUp.TabIndex = 25;
-            this.profilePicSignUp.TabStop = false;
-            this.profilePicSignUp.Visible = false;
-            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -546,10 +546,10 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
             this.ClientSize = new System.Drawing.Size(461, 675);
+            this.Controls.Add(this.pnlLogin);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pnlSignUp);
-            this.Controls.Add(this.pnlLogin);
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Login";
@@ -558,12 +558,12 @@
             this.Load += new System.EventHandler(this.Login_Load);
             this.pnlLogin.ResumeLayout(false);
             this.pnlLogin.PerformLayout();
-            this.pnlSignUp.ResumeLayout(false);
-            this.pnlSignUp.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ErrorProvider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.pnlSignUp.ResumeLayout(false);
+            this.pnlSignUp.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.profilePicSignUp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ErrorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
